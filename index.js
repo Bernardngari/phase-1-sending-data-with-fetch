@@ -3,7 +3,7 @@ function submitData(userName, userEmail){
     method: "POST",
     headers: {
     "Content-Type": "application/json",
-    Accept: "application/json",
+    "Accept": "application/json",
     },
     body: JSON.stringify({
     name: userName,
@@ -11,10 +11,12 @@ function submitData(userName, userEmail){
     })
     })
     .then((res)=>res.json()) 
-    .then( ( data => document.body.innerHTML = data.toString) )
-    .catch((error) => document.body.innerHTML = error.message)
+    .then(( data => document.body.innerHTML = JSON.stringify(data)) )
+    .catch((object)=> {
+      return document.body.innerHTML = object;;
+    })
   
  
 }
-submitData()
+submitData('Steve','steve@steve.com')
 
